@@ -1,0 +1,190 @@
+HTML5 Template: A Basic Boilerplate for Any Project
+ <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+
+ link color: rgb(74,31,165)
+
+ content width: 768px;
+
+
+
+HTML
+
+Louis LazarisJune 24, 2021
+Share
+
+
+
+
+
+As you learn HTML5 and add new techniques to your toolbox, you’re likely going to want to build yourself an HTML boilerplate to start off all future projects. This is definitely worth doing, and there are many starting points online to help you build your own HTML5 template.
+
+In this article, we’ll look at how to get started with building your own HTML5 boilerplate. We’ll walk through the essential elements of an HTML template, ending with a basic template that you can take with you and build upon.
+
+If you’d rather just grab the code now and read this article later, here’s our finished HTML5 template.
+
+The Anatomy of an HTML5 Template
+An HTML template typically includes the following parts:
+
+The document type declaration (or doctype)
+The <html> Element
+The character encoding
+The viewport meta element
+<title>, description, and author
+Open Graph meta elements for social cards
+Favicons and touch icons
+Links to stylesheets and scripts
+Other than the document type declaration and <html> element, the elements listed above will mostly be found inside the <head> section of the HTML template.
+
+The HTML5 Doctype
+Your HTML5 template needs to start with a document type declaration, or doctype. A doctype is simply a way to tell the browser — or any other parser — what type of document it’s looking at. In the case of HTML files, it means the specific version and flavor of HTML. The doctype should always be the first item at the top of any HTML file. Many years ago, the doctype declaration was an ugly and hard-to-remember mess, often specified as “XHTML Strict” or “HTML Transitional”.
+
+With the advent of HTML5, those indecipherable eyesores are gone and now all you need is this:
+
+<!doctype html>
+Simple, and to the point. The doctype can be written in uppercase, lowercase, or mixed case. You’ll notice that the “5” is conspicuously missing from the declaration. Although the current iteration of web markup is known as “HTML5”, it really is just an evolution of previous HTML standards — and future specifications will simply be a development of what we have today. There’s never going to be an “HTML6”, so it’s common to refer to the current state of web markup as simply “HTML”.
+
+Because browsers are required to support older content on the Web, there’s no reliance on the doctype to tell browsers which features should be supported in a given document. In other words, the doctype alone isn’t going to make your pages compliant with modern HTML features. It’s really up to the browser to determine feature support on a case-by-case basis, regardless of the doctype used. In fact, you can use one of the older doctypes with new HTML5 elements on a page and the page will render the same as it would if you used the new doctype.
+
+The <html> Element
+Following the doctype in any HTML document is the <html> element:
+
+<html lang="en">
+This hasn’t undergone any significant change since the advent of HTML5. In the code snippet above, we’ve included the lang attribute with a value of en, which specifies that the document is in English. This isn’t required for a page to validate, but you’ll get a warning from most validators if you don’t include it.
+
+The <html> element is divided into two parts, the <head> and <body> sections. The <head> section contains important information about the document that isn’t displayed to the end user — such as the character encoding, and links to CSS files and possibly JavaScript. The <body> section contains everything that’s displayed in the browser — text, images, and so on.
+
+HTML Document Character Encoding
+The first line inside the <head> section of an HTML document is the one that defines the character encoding for the document. This is an optional feature and won’t cause any warnings in validators, but it’s recommended for most HTML pages:
+
+<meta charset="utf-8">
+In nearly all cases, utf-8 is the value you’ll be using in your documents. A full explanation of character encoding is beyond the scope of this article, and it probably won’t be that interesting to you, either. Nonetheless, if you want to delve a little deeper, you can read about character encoding in the HTML specification.
+
+
+Note: to ensure that certain older browsers read the character encoding correctly, the entire character encoding declaration must be included somewhere within the first 512 characters of your document. It should also appear before any content-based elements (like the <title> element that appears later in our example).
+
+There’s much more we could write about this subject, but for now, we’re content to accept this simplified declaration and move on to the next part of our document.
+
+The Viewport Meta Element
+The viewport meta element is a feature you’ll see in just about every HTML5 template. It’s important for responsive web design and mobile-first design:
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+This <meta> element includes two attributes that work together as a name/value set. In this case, the name is set to viwport and the value is width=device-width, initial-scale=1. This is used by mobile devices only. You’ll notice the value has two parts to it, described here:
+
+width=device-width: the pixel width of the viewport that you want the website to be rendered at.
+initial-scale: this should be a positive number between 0.0 and 10.0. A value of “1” indicates that there’s a 1:1 ratio between the device width and the viewport size.
+You can read up a little more on these meta element features on MDN, but for now just know that, in most cases, this meta element with these settings is best for mobile-first, responsive websites.
+
+The <title>, description, and author
+The next section of the HTML template contains the following three lines:
+
+<title>A Basic HTML5 Template</title>
+<meta name="description" content="A simple HTML5 Template for new projects.">
+<meta name="author" content="SitePoint">
+These elements have been part of HTML for a long time, so there’s nothing too new here. The <title> is what’s displayed in the browser’s title bar (such as when you hover over a browser tab). This element is the only mandatory element inside the <head>.
+
+The other two are optional <meta> elements defining a description for SEO purposes along with an author. All elements inside <head> are optional with the exception of <title>. In fact, you can put as many valid <meta> elements in the <head> as you like.
+
+Open Graph Meta Elements for Social Cards
+As mentioned, all meta elements are optional but many have benefits for SEO and social media marketing. The next section in our HTML5 boilerplate includes some of those meta element options:
+
+<meta property="og:title" content="A Basic HTML5 Template">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+<meta property="og:description" content="A simple HTML5 Template for new projects.">
+<meta property="og:image" content="image.png">
+These <meta> elements take advantage of something called the Open Graph protocol, and there are many others you can use. These are the ones you’re likely to use most often. You can view a full list of available Open Graph meta options on the Open Graph website.
+
+The ones we’re including here will enhance the appearance of the web page when it’s linked in a social media post. For example, the five <meta> elements included here will appear in social cards embedding the following data:
+
+a title for the content
+the type of content being delivered
+the canonical URL for the content
+a description of the content
+an image to associate with the content
+When you see a post shared on social media, you’ll often see these bits of data automatically added to the social media post. For example, below is what would appear in a tweet if you included a link to GitHub’s home page:
+
+Favicons and Touch Icons
+The next section in the HTML5 template includes <link> elements that indicate resources to include as a favicon and apple touch icon:
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+The favicon.ico file is for legacy browsers and doesn’t have to be included in the code. As long as your favicon.ico file is included in the root of your project, the browser will automatically find it. The favicon.svg file is for modern browsers that support SVG icons. The last element references the icon that’s used on Apple devices when the page is added to the user’s home screen.
+
+There are other options you can include here, including a web app manifest file that references other icons. For a full discussion, we recommend Andrey Sitnik’s post on the subject. But the ones included here will suffice for a simple starter template.
+
+Including a Stylesheet and Scripts
+The last two significant portions of our HTML template are the reference to a stylesheet and script. Both are optional, of course:
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+The stylesheet is included using the <link> element with an appropriate rel attribute. A stylesheet can be included anywhere in a document, but you’ll customarily see it inside the <head>. And unlike older versions of HTML, there’s no need to include a type attribute (which was never needed in the first place).
+
+Likewise with script elements, you’ll see them almost anywhere in a document, but they’re usually at the bottom (just before the closing </body> tag) as a best practice.
+
+<script src="js/scripts.js"></script>
+Placing the <script> element at the bottom of the page is for the purposes of the page-load speed. When a browser encounters a script, it will pause downloading and rendering the rest of the page while it parses the script. This results in the page appearing to load much more slowly when large scripts are included at the top of the page before any content. Thus, most scripts should be placed at the very bottom of the page, so that they’ll only be parsed after the rest of the page has loaded. But note that in some cases, the script may need to be placed in the head of your document, because you want it to take effect before the browser starts rendering the page.
+
+Similar to stylesheet references, the type attribute on scripts is not (and never was) needed. Since JavaScript is, for all practical purposes, the only real scripting language used on the Web, and since all browsers will assume that you’re using JavaScript even when you don’t explicitly declare that fact, you can safely leave off type="text/javascript, which often appears in legacy code.
+
+A Note About Older Browsers and New Elements
+When HTML5 was introduced, it included a number of new elements, such as <article> and <section>. You might think that support for unrecognized elements would be a major problem for older browsers — but it’s not! The majority of browsers don’t actually care what tags you use. If you had an HTML document with a <recipe> element (or even a <ziggy> element) in it, and your CSS attached some styles to that element, nearly every browser would proceed as if this were totally normal, applying your styling without complaint.
+
+Of course, such a hypothetical document would fail to validate and may have accessibility problems, but it would render correctly in almost all browsers — the exception being old versions of Internet Explorer (IE). Prior to version 9, IE prevented unrecognized elements from receiving styling. These mystery elements were seen by the rendering engine as “unknown elements”, so you were unable to change the way they looked or behaved. This includes not only our imagined elements, but also any elements that had yet to be defined at the time those browser versions were developed, including new HTML5 elements.
+
+Fortunately, older browsers that don’t support styling of new elements are virtually nonexistent today, so you can safely use any new HTML element without worry in almost any project.
+
+That being said, if you really need to support ancient browsers, you can still use the trusty HTML5 Shiv, a simple piece of JavaScript originally developed by John Resig. Inspired by the work of Sjoerd Visscher, it made the new HTML5 elements styleable in older versions of IE. Really, though, this shouldn’t be needed today. As indicated by caniuse.com, HTML5 elements are supported across all in-use browsers.
+
+The Complete HTML5 Boilerplate
+Here’s our final HTML5 Template — a basic boilerplate that you can use for any project:
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>A Basic HTML5 Template</title>
+  <meta name="description" content="A simple HTML5 Template for new projects.">
+  <meta name="author" content="SitePoint">
+
+  <meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+  <meta property="og:description" content="A simple HTML5 Template for new projects.">
+  <meta property="og:image" content="image.png">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+  <!-- your content here... -->
+  <script src="js/scripts.js"></script>
+</body>
+</html>
+You can drop this simple, ready-to-use HTML5 template into any project today! Building on this, you can add whatever content you want between the <body> and </body> tags.
+
+Next Steps
+A great way to take your web layouts to the next level is with The Principles of Beautiful Web Design, 4th Edition. This book will teach you the principles of design and show you how to implement them for the Web. It was completely rewritten in September 2020 and includes cutting-edge techniques you haven’t read about anywhere else.
+
+To hone your CSS knowledge, our curriculum of modern CSS projects will help you master the latest, advanced editions to CSS3.
+
+Beyond that point, you can take your website or web app development to the next level with interactivity and programmatic, reactive UIs. Check out SitePoint’s extensive resources on JavaScript and React, for example. And find out how to start new projects faster with our guide to the best scaffolding web tools and libraries. Alternatively, if you’d like to build web experiences without learning to code, read our primer on the no-code movement. The latest no-code tools have changed the game. For the first time, they’re powerful enough to provide a serious alternative to coding in many situations.
+
+Share This Article
+
+
+
+
+
+Louis Lazaris
+Louis Lazaris
+Louis has been involved in the web dev industry since 2000, and is a co-editor of the HTML/CSS content on SitePoint. He blogs at Impressive Webs and curates Web Tools Weekly, a newsletter for front-end developers primarily focused on tools.
+
