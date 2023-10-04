@@ -1,0 +1,80 @@
+/* Start reset file */
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+}
+/* End Reset file */
+
+.container {
+    font-family: Roboto, serif;
+    width: 150px;
+    margin: 0 auto;
+    padding: 50px;
+    position: relative;
+}
+
+.first,
+.second,
+.third {
+    height: 150px;
+    width: 150px;
+}
+
+.first {
+    background: blue;
+    margin-bottom: 30px;
+}
+
+.second {
+    background: rgba(50, 50, 50, 0.5);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 75px;
+    text-align: center;
+    line-height: 150px;
+}
+
+.second:active {
+    background: brown;
+    color: #fff;
+    font-size: 30px;
+}
+
+.third {
+    background: aqua;
+}
+
+.paragraph {
+    position: relative;
+}
+
+.paragraph:after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: greenyellow;
+}
+
+
+
+.table {
+    border-collapse: collapse;
+}
+
+.table tbody tr:nth-child(even) {
+    background: #888888;
+}
+
+.table td,
+.table th {
+    border-radius: 5px;
+    text-align: center;
+    border: 5px double black;
+    padding: 20px;
+    font-size: 30px;
+}
