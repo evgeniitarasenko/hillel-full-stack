@@ -1,0 +1,174 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Montserrat, serif;
+}
+
+.first-screen {
+    height: 70vh;
+    background-image: url("https://i1.sndcdn.com/visuals-001065631300-SGqz5u-original.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.nav,
+.sub-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #623bed;
+    font-size: 0;
+}
+
+.nav {
+    margin-bottom: 100px;
+}
+
+.nav li {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    border-left: 2px solid #fff;
+}
+
+.nav li:first-child,
+.nav li:last-child {
+    border-left: none;
+}
+
+.nav li:hover {
+    background-color: #1739a9;
+}
+
+.nav a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.nav .right-nav {
+    float: right;
+}
+
+.nav li  {
+    position: relative;
+}
+
+.nav li>.sub-nav {
+    display: none;
+    position: absolute;
+}
+
+.nav li:hover>.sub-nav {
+    display: block;
+}
+
+.nav .sub-nav li {
+    border: none;
+}
+
+.nav .sub-nav li {
+    width: 100%;
+}
+
+.nav .sub-nav .sub-nav {
+    left: calc(100%);
+    top: 0;
+}
+
+.container {
+    width: 768px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+section .title {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    padding: 10px 0;
+}
+
+.form-row>label {
+    display: inline-block;
+    width: 44%;
+    text-align: right;
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+.form-row-group {
+    display: inline-block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-row input[type=text],
+.form-row input[type=password],
+.form-row input[type=email] {
+    border: none;
+    border-bottom: 1px solid #623bed;
+    padding: 5px;
+}
+
+.form-row input[type=text]:focus,
+.form-row input[type=password]:focus,
+.form-row input[type=email]:focus {
+    outline: none;
+    border-bottom: 1px solid #1739a9;
+}
+
+.form-row input[type=submit] {
+    padding: 5px 10px;
+    background: transparent;
+    border: 1px solid #623bed;
+    color: #623bed;
+}
+
+.form-row input[type=submit]:hover {
+    border: 1px solid #1739a9;
+    color: #fff;
+    background: #623bed;
+}
+
+label.required:after {
+    content: '*';
+    color: red;
+    padding-left: 3px;
+    font-size: 12px;
+    position: relative;
+    top: -3px;
+}
+
+footer {
+    background: #623bed;
+    text-align: center;
+}
+
+footer .footer-nav {
+    text-align: center;
+    margin: 0;
+}
+
+footer .footer-nav li {
+    display: inline-block;
+    padding: 20px;
+    color: #fff;
+}
+
+footer .footer-nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer .footer-nav a:hover {
+    text-decoration: underline;
+}

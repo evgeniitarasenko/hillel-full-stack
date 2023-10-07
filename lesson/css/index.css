@@ -1,0 +1,69 @@
+body {
+    font-family: Montserrat, serif;
+}
+
+/*
+  https://i1.sndcdn.com/visuals-001065631300-SGqz5u-original.jpg
+
+  #623bed
+  #1739a9
+  */
+
+.nav,
+.sub-nav {
+    background-color: #623bed;
+    font-size: 0;
+    list-style: none;
+}
+
+.nav li {
+    font-size: 16px;
+    display: inline-block;
+    border-left: 1px solid #fff;
+    position: relative;
+}
+
+.nav li:first-child,
+.nav li:last-child {
+    border: none;
+}
+
+.nav li:hover {
+    background: #1739a9;
+}
+
+.nav a {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.nav .right-nav {
+    float: right;
+}
+
+.nav .sub-nav {
+    position: absolute;
+}
+
+.nav .sub-nav li {
+    width: 100%;
+    border: none;
+}
+
+.nav .sub-nav {
+    display: none;
+}
+
+.nav li:hover>.sub-nav {
+    display: block;
+}
+
+
+.container {
+    padding-top: 50px;
+    width: 768px;
+    margin: 0 auto;
+}

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/hw.css">
+</head>
+<body>
+<section class="first-screen">
+    <!-- Navigation -->
+    <ul class="nav">
+        <li><a href="#">Home</a></li>
+        <li>
+            <a href="#">Gallery</a>
+            <ul class="sub-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li>
+                    <ul class="sub-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li>
+                            <ul class="sub-nav">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Gallery</a></li>
+                                <li><a href="#">Contacts</a></li>
+                                <li><a href="#">Contacts</a></li>
+                                <li><a href="#">Contacts</a></li>
+                                <li><a href="#">Contacts</a></li>
+                                <li><a href="#">About us</a></li>
+                            </ul>
+                            <a href="#">Contacts</a>
+                        </li>
+                        <li><a href="#">About us</a></li>
+                    </ul>
+                    <a href="#">Contacts</a>
+                </li>
+                <li><a href="#">About us</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Contacts</a></li>
+        <li><a href="#">About us</a></li>
+        <li class="right-nav"><a href="#">Support</a></li>
+    </ul>
+</section>
+
+<section class="container">
+    <h2 class="title">Registration form</h2>
+
+    <form action="#" method="POST">
+        <div class="form-row">
+            <label class="required" for="name">Name</label>
+            <input type="text" required placeholder="Name" name="name" id="name">
+        </div>
+
+        <div class="form-row">
+            <label class="required" for="email">Email</label>
+            <input type="email" required placeholder="Email" name="email" id="email">
+        </div>
+
+        <div class="form-row">
+            <label class="required" for="login">Login</label>
+            <input type="text" required placeholder="Login" name="login" id="login">
+        </div>
+
+        <div class="form-row">
+            <label class="required" for="password">Password</label>
+            <input type="password" required placeholder="Password" name="password" id="password">
+        </div>
+
+        <div class="form-row">
+            <label for="avatar">Avatar</label>
+            <input type="file" name="avatar" id="avatar">
+        </div>
+
+        <div class="form-row">
+            <label for="country">Country</label>
+            <select id="country" name="country">
+                <option selected value="UA">Ukraine</option>
+                <option value="PL">Poland</option>
+                <option value="DE">Germany</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label>Gender</label>
+            <div class="form-row-group">
+                <label for="male">Male</label>
+                <input type="radio" name="gender" value="male" id="male">
+
+                <label for="female">Female</label>
+                <input type="radio" name="gender" value="female" id="female">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <label>Grade</label>
+            <div class="form-row-group">
+                <label for="junior">Junior</label>
+                <input type="checkbox" name="junior" id="junior">
+
+                <label for="middle">Middle</label>
+                <input type="checkbox" name="middle" id="middle">
+
+                <label for="senior">Senior</label>
+                <input type="checkbox" name="senior" id="senior">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <label></label>
+            <input type="submit" value="Submit">
+        </div>
+
+    </form>
+</section>
+
+<footer>
+    <ul class="footer-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contacts</a></li>
+        <li><a href="#">About us</a></li>
+    </ul>
+</footer>
+</body>
+</html>

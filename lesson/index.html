@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+
+<!-- Невпорядковані списки -->
+<!--<ul>-->
+<!--    <li>Blender1</li>-->
+<!--    <li>Toaster2</li>-->
+<!--    <li>Vacuum3</li>-->
+<!--</ul>-->
+
+<!-- Впорядковані списки -->
+<!--<ol>-->
+<!--    <li>Blender4</li>-->
+<!--    <li>Toaster5</li>-->
+<!--    <li>Vacuum6</li>-->
+<!--</ol>-->
+
+<!-- Зміна типу впорядкованного списку  -->
+<!--<ol type="A">-->
+<!--    <li>Blender</li>-->
+<!--    <li>Toaster</li>-->
+<!--    <li>Vacuum</li>-->
+<!--    <li>Vacuum</li>-->
+<!--    <li>Vacuum</li>-->
+<!--    <li>Vacuum</li>-->
+<!--    <li>Vacuum</li>-->
+<!--</ol>-->
+
+<!-- Контент списку -->
+<!--<ul>-->
+<!--    <li>-->
+<!--        Blender-->
+<!--        <img src="https://picsum.photos/100/100" alt="Lorem pic">-->
+<!--        <p>When Rosa Parks was told….</p>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--        <p>Hello</p>-->
+<!--        <img src="https://picsum.photos/100/100" alt="Lorem pic">-->
+<!--        <p>EVE is a probe droid conceived as an Extraterrestrial Vegetation Evaluator…..</p>-->
+<!--    </li>-->
+<!--</ul>-->
+
+<!-- Вкладені списки -->
+<!--<ul role="list">-->
+<!--    <li>-->
+<!--        <a href="#">Elements</a>-->
+<!--        <ul>-->
+<!--            <li>-->
+<!--                <a href="#">Non-replaced elements</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#">Replaced and void elements</a>-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <a href="#">Non-replaced elements</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#">Replaced and void elements</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--        <a href="#">Attributes</a>-->
+<!--    </li>-->
+<!--</ul>-->
+
+
+<!-- Navigation -->
+<ul class="nav">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li>
+        <a href="#">Contacts</a>
+        <ul class="sub-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Gallefdsfdsry</a></li>
+            <li><a href="#">Gallery</a></li>
+        </ul>
+    </li>
+    <li><a href="#">About us</a></li>
+    <li class="right-nav"><a href="#">Support</a></li>
+</ul>
+
+<div class="test"></div>
+
+<section class="container">
+    <form action="#" method="POST">
+        <label>
+            Name
+            <input type="text" placeholder="First Name" name="first_name">
+        </label>
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" name="password" id="password">
+
+        <div>
+            <label for="avatar">Avatar</label>
+            <input type="file" multiple name="avatar" id="avatar">
+        </div>
+
+
+        <!-- Radio -->
+        <label for="male">Male</label>
+        <input type="radio" name="gender" value="" id="male">
+
+        <label for="female">Female</label>
+        <input type="radio" name="gender" value="female" id="female">
+        <input type="radio" name="gender" value="female1" id="female1">
+
+
+        <div>
+            <input type="radio" name="gender2" value="female">
+            <input type="radio" name="gender2" value="female1">
+        </div>
+
+        <div>
+            <input type="radio" name="gender3" value="female">
+            <input type="radio" name="gender3" value="female1">
+            <input type="radio" name="gender3" value="female2">
+            <input type="radio" name="gender3" value="female3">
+        </div>
+
+
+        <!-- Checkbox -->
+        <label for="junior">Junior</label>
+        <input type="checkbox" name="junior" id="junior">
+
+        <label for="middle">Middle</label>
+        <input type="checkbox" name="middle" id="middle">
+
+        <label for="senior">Senior</label>
+        <input type="checkbox" name="senior" id="senior">
+
+        <!--         Select -->
+        <label for="country">Country</label>
+        <select id="country" name="country">
+            <option selected disabled value="">Choose country...</option>
+            <option value="UA">Ukraine</option>
+            <option value="PL">Poland</option>
+            <option value="DE">Germany</option>
+        </select>
+
+        <textarea style="width: 200px; height: 100px;" id="" name="" rows="20"></textarea>
+
+        <input type="submit" value="Submit">
+    </form>
+</section>
+</body>
+</html>
