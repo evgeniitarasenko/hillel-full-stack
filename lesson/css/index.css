@@ -1,0 +1,75 @@
+body {
+    font-family: 'Inter', sans-serif;
+    color: #051114;
+    font-size: 14px;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.relative {
+    position: relative;
+}
+
+header {
+    /* Mock */
+    height: 59px;
+    border: 1px solid #888;
+    /*  End mock  */
+    margin-bottom: 150px;
+}
+
+.first-screen {
+    overflow: hidden;
+    padding-bottom: 245px;
+    padding-top: 40px;
+    background: linear-gradient(251deg, #461096 -26.6%, #7F3CE0 114.33%);
+}
+
+.title-box {
+    width: 498px;
+    z-index: 10;
+    position: relative;
+}
+
+.title-box h1 {
+    color: #fff;
+    font-size: 62px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.title-box p {
+    width: 435px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.btn {
+    line-height: 62px;
+    padding: 0 30px;
+    border-radius: 5px;
+    background: #42B4EE;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.banner-box {
+    top: 137px;
+    right: -147px;
+    width: 752px;
+    height: 562px;
+    background: url("./../img/illustration_2.png") no-repeat center;
+    background-size: contain;
+    position: absolute;
+    z-index: 1;
+}
+
