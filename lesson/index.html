@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6 mb-3">
+            <!-- form-label, form-control -->
+            <!-- form-control-lg, .form-control-sm -->
+            <!-- form-text -->
+            <!-- disabled, readonly -->
+            <label for="test" class="form-label">Password</label>
+            <input type="password" id="test" placeholder="Password" class="form-control" value="1231231231">
+            <div class="form-text">
+                Your password must be 8-20 characters long, ...
+            </div>
+        </div>
+
+        <div class="col-6 mb-3">
+            <!-- form-label, form-select -->
+            <label for="select-test" class="form-label">Test select</label>
+            <select name="test" id="select-test" class="form-select">
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+        </div>
+
+        <div class="col-6 mb-3">
+            <div class="form-check">
+                <input type="checkbox" value="" id="flexCheckDefault" class="form-check-input">
+                <label for="flexCheckDefault" class="form-check-label">
+                    Default checkbox
+                </label>
+            </div>
+
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Test checkbox
+                </label>
+            </div>
+
+            <!--                        form-check-inline -->
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+            </div>
+        </div>
+
+        <div class="col-6 mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label for="flexRadioDefault1" class="form-check-label">
+                    Default radio
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Test radio
+                </label>
+            </div>
+        </div>
+
+        <div class="col-6 mb-3">
+            <label for="customRange1" class="form-label">Example range</label>
+            <input type="range" class="form-range" id="customRange1">
+        </div>
+
+        <div class="col-6 mb-3">
+            <div class="input-group mb-3">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" placeholder="Username">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Recipient's username">
+                <span class="input-group-text">@example.com</span>
+            </div>
+
+            <div class="mb-3">
+                <label for="basic-url" class="form-label">Your vanity URL</label>
+                <div class="input-group">
+                    <span class="input-group-text">https://example.com/users/</span>
+                    <input type="text" class="form-control" id="basic-url">
+                </div>
+                <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <input type="text" class="form-control">
+                <span class="input-group-text">.00</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Username">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" placeholder="Server">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text">With textarea</span>
+                <textarea class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="col mb-3">
+        <!--        is-invalid -->
+        <label for="validationServer01" class="form-label">First name</label>
+        <input type="text" class="form-control is-invalid" id="validationServer01" value="Mark" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Error!
+        </div>
+    </div>
+
+    <div class="col-6 mb-3">
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+        <button type="button" class="btn btn-link">Link</button>
+    </div>
+
+    <div class="col-6 mb-3">
+        <div class="card ">
+            <div class="card-header text-start">
+                Featured
+            </div>
+            <div class="card-body text-center">
+                <h1>Some content</h1>
+            </div>
+            <div class="card-footer text-end">
+                2 days ago
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
