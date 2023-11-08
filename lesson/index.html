@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        tr:hover .action-box.row {
+            display: flex;
+        }
+
+        td:first-child {
+            position: relative;
+        }
+
+        .action-box.row {
+            font-size: 12px;
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            left: -25px;
+            top: -7px;
+        }
+
+        .action-box span {
+            margin-bottom: 2px;
+            cursor: pointer;
+        }
+
+        .action-box span:last-child {
+            margin-bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+            <table class="table table-bordered mt-4">
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="action-box row">
+                            <span class="badge bg-primary">&uarr;</span>
+                            <span class="badge bg-danger">x</span>
+                            <span class="badge bg-primary">&darr;</span>
+                        </div>
+                        1
+                    </td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="./scripts/index.js"></script>
+</body>
+</html>
