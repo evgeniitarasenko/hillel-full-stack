@@ -16,15 +16,7 @@
         <div class="col-12">
             <button class="btn btn-success mb-3" onclick="create()">Add</button>
 
-            <ul id="todo-list" class="list-group">
-<!--                <li class="list-group-item d-flex justify-content-between align-items-center">-->
-<!--                    <div>sdfdsfds</div>-->
-<!--                    <div>-->
-<!--                        <button class="btn btn-warning btn-sm">Edit</button>-->
-<!--                        <button class="btn btn-danger btn-sm">Remove</button>-->
-<!--                    </div>-->
-<!--                </li>-->
-            </ul>
+            <ul id="todo-list" class="list-group"></ul>
         </div>
     </div>
 </div>
@@ -32,14 +24,15 @@
 <div id="form-modal" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="form" action="#" method="post">
-                <div class="modal-body">
-                    <input id="form-uuid" type="hidden">
+            <form id="saving-form" action="#" method="POST">
+                <input id="form-uuid" type="hidden" name="uuid" value="">
 
-                    <label for="form-title" class="form-label">Title</label>
-                    <input type="text" id="form-title" name="title" class="form-control">
+                <div class="modal-body">
+                    <label for="form-title" class="form-label">Item</label>
+                    <input type="text" id="form-title" name="title"  class="form-control">
                     <div id="form-title-invalid-feedback" class="invalid-feedback"></div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" onclick="hideFormModal()">Close</button>
                     <button type="submit" class="btn btn-success">Save</button>

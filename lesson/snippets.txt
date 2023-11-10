@@ -1,0 +1,34 @@
+        <div>${text}</div>
+        <div>
+            <button class="btn btn-warning btn-sm">Edit</button>
+            <button class="btn btn-danger btn-sm">Remove</button>
+        </div>
+
+
+        'list-group-item', 'd-flex', 'justify-content-between', 'align-items-center'
+
+ return Math.random().toString(16).slice(2);
+
+
+
+ <div id="form-modal" class="modal">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <form id="saving-form" action="#" method="POST">
+                 <div class="modal-body">
+                    <input id="form-uuid" type="hidden" name="uuid" value="">
+
+
+                     <label for="form-title" class="form-label">Item</label>
+                     <input type="text" id="form-title" name="title"  class="form-control">
+                     <div id="form-title-invalid-feedback" class="invalid-feedback"></div>
+                 </div>
+
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" onclick="hideFormModal()">Close</button>
+                     <button type="submit" class="btn btn-success">Save</button>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
