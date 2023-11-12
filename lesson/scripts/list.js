@@ -12,6 +12,12 @@ function hideFormModal() {
 /*
  * Actions
  */
+function init() {
+    const list = getToDoList();
+
+    list.forEach((item) => createToDoHtmlItem(item));
+}
+
 function create() {
     document.getElementById('form-uuid').value = '';
     document.getElementById('form-title').value = '';
@@ -35,23 +41,33 @@ function remove(uuid) {
 }
 
 function save(data) {
-    const uuid = data.uuid ? data.uuid : generateUuid();
-
-    // Editing
-    const editedLi = document.getElementById(`item-${uuid}`);
-    if (editedLi) {
-        editedLi.querySelector(`#title-${uuid}`).innerText = data.title;
-        return;
+    if (!data.uuid) {
+        data.uuid = generateUuid();
     }
 
-    // Creating new element
+    let list = getToDoList();
+
+    const editableItemIndex = list.findIndex((item) => item.uuid === data.uuid);
+
+    if (editableItemIndex !== -1) {
+        list[editableItemIndex] = data;
+        updateToDoHtmlItem(data);
+    } else {
+        list.push(data);
+        createToDoHtmlItem(data);
+    }
+
+    setToDoList(list);
+}
+
+function createToDoHtmlItem(data) {
     let liElement = document.createElement('li');
-    liElement.id = `item-${uuid}`;
+    liElement.id = `item-${data.uuid}`;
     liElement.innerHTML = `
-        <div id="title-${uuid}">${data.title}</div>
+        <div id="title-${data.uuid}">${data.title}</div>
         <div>
-            <button data-uuid="${uuid}" class="btn btn-warning btn-sm edit-button">Edit</button>
-            <button data-uuid="${uuid}" class="btn btn-danger btn-sm remove-button">Remove</button>
+            <button data-uuid="${data.uuid}" class="btn btn-warning btn-sm edit-button">Edit</button>
+            <button data-uuid="${data.uuid}" class="btn btn-danger btn-sm remove-button">Remove</button>
         </div>`;
     liElement.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
 
@@ -64,6 +80,14 @@ function save(data) {
     });
 
     document.getElementById('todo-list').appendChild(liElement);
+}
+
+function updateToDoHtmlItem(data) {
+    const editedLi = document.getElementById(`item-${data.uuid}`);
+
+    if (editedLi) {
+        editedLi.querySelector(`#title-${data.uuid}`).innerText = data.title;
+    }
 }
 
 /*
@@ -86,6 +110,13 @@ document.getElementById('form').addEventListener('submit', function (event) {
     }
 });
 
+window.addEventListener('load', function () {
+    init();
+})
+
+/*
+ * Validation
+ */
 function validateForm(data) {
     clearErrors();
 
@@ -103,6 +134,19 @@ function validateForm(data) {
 
 function clearErrors() {
     document.getElementById('form-title').classList.remove('is-invalid');
+}
+
+/*
+ * Local storage
+ */
+function getToDoList() {
+    const list = localStorage.getItem('todo-list');
+
+    return list ? JSON.parse(list) : [];
+}
+
+function setToDoList(list) {
+    localStorage.setItem('todo-list', JSON.stringify(list));
 }
 
 /*
