@@ -9,6 +9,66 @@
  */
 let todoList = [];
 
+let server = {
+    url: 'https://crudapi.co.uk/api/v1/todo-list',
+    token: 'Gh8cwSj1Wo6tJEp7s8YFhIaYV7Po1jMSLBRiHdop0thnZQ_OFQ',
+
+    /*
+     * Отримання списку записів з серверу
+     */
+    list() {
+        return fetch(this.url, {
+            method: 'get',
+            headers: new Headers({
+                'Authorization': `Bearer ${this.token}`,
+                'Content-Type': 'application/json'
+            }),
+        }).then((response) => {
+            return response.json()
+        });
+    },
+
+    /*
+    * Запис нового завдання на сервер.
+    */
+    store(task) {
+        return fetch(this.url, {
+            method: 'post',
+            headers: new Headers({
+                'Authorization': `Bearer ${this.token}`,
+                'Content-Type': 'application/json',
+            }),
+            body: JSON.stringify([task])
+        }).then((response) => response.json());
+    },
+    /*
+     * Оновлення запису на сервері по uuid
+     */
+    update(uuid, task) {
+        return fetch(`${this.url}/${uuid}`, {
+            method: 'put',
+            headers: new Headers({
+                'Authorization': `Bearer ${this.token}`,
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify(task)
+        }).then((response) => response.json());
+    },
+
+    /*
+     * Видалення запису з серверу
+     */
+    remove(uuid) {
+        return fetch(`${this.url}/${uuid}`, {
+            method: 'delete',
+            headers: new Headers({
+                'Authorization': `Bearer ${this.token}`,
+                'Content-Type': 'application/json'
+            }),
+        }).then((response) => response.json());
+    },
+};
+
 /*
  * =====================================================================================================================
  * Modal handling
@@ -33,17 +93,37 @@ function hideFormModal() {
  *
  * В блоку дій ми прописуємо всі функції, які виконують певні дії: створення, редагування, видалення, зберігання, тощо.
  */
+
 /*
  * Ця функція запускається один раз при завантаженні сторінки. Її мета - подвивитись у локальне сховище і при
  * наявності там данних туду ліста - створити відповідні елементи у html.
  */
 function init() {
-    // Звертаємось до локал сторейджу, отримуємо json рядок, парсимо його, щоб отримати масив ітемів.
-    todoList = JSON.parse(localStorage.getItem('todo-list'));
+    server.list().then((list) => {
+        list.items.sort((a, b) => {
+            return a._created - b._created;
+        }).forEach((task) => {
+            let formattedTask = {
+                uuid: task._uuid,
+                title: task.title,
+            };
 
-    // Для кожного ітему викликаємо функцію createHtmlTodoItem, яка у свою чергу буде створювати html елементи.
-    // У змінній item ми по черзі маємо об'єкт туду лісту, наприклад {uuid: 'asdwe42dwee2', title: 'Item 1'}
-    todoList.forEach((item) => createHtmlTodoItem(item));
+            todoList.push(formattedTask);
+            createHtmlTodoItem(formattedTask);
+        })
+    })
+
+
+
+        // [1, 2].forEach((item) => item * 2)
+        // [1, 2].forEach((item) => {
+        //     //
+        //     return item * 2
+        // })
+        // [1, 2].forEach(function (item) {
+        //     //
+        //     return item * 2
+        // })
 }
 
 /*
@@ -94,36 +174,30 @@ function remove(uuid) {
  * Якщо нам потрібно редагувати існуючий елемент, то uuid буде заповненим {uuid: 'asdwe42dwee2', title: 'Item 1'}
  */
 function save(data) {
-    // Якщо у нашому об'єкту data немає uuid (тобто нам потрібно його створити) - генеруємо новий.
     if (!data.uuid) {
-        data.uuid = generateUuid();
-    }
+        server.store({title: data.title}).then((data) => {
+            let formattedTask = {
+                uuid: data.items[0]._uuid,
+                title: data.items[0].title,
+            };
 
-    /*
-     * Шукаемо індекс інсуючуго об'єкту в масиві todoList за uuid.
-     * У item ми будемо по черзі мати кожен з елементів todoList. А ми пам'ятаємо, що елемент todoList - це об'єкти.
-     * Ми порівнюємо uuid у об'єкті масиву todoList з тим uuid, котрий ми маємо у data
-     * Якщо uuid співпадає - повертаємо індекс знайденого елементу у масиві todoList.
-     * Якщо нічого не знайденмо - findIndex поверне -1
-     */
-    let index = todoList.findIndex((item) => item.uuid === data.uuid);
-    if (index === -1) { // Якщо не знайшли жодного об'єкту у масиві за uuid (тобто ми створюємо новий елемент)
-        // Додаємо новий елемент у масив
-        todoList.push(data);
-        // Створюємо новий html елемент
-        createHtmlTodoItem(data);
-    } else { // У протилежному випадку (якщо знайшли елемент у масиві) (якщо елемент існує і потрібно його редагувати)
-        // Редагуємо елемент у масиві за індексом
-        todoList[index] = data;
-        // Редагуємо елемент у html
-        editHtmlTodoItem(data);
-    }
+            todoList.push(formattedTask);
+            createHtmlTodoItem(formattedTask);
+        });
+    } else {
+        server.update(data.uuid, {title: data.title}).then((data) => {
+            let formattedTask = {
+                uuid: data._uuid,
+                title: data.title,
+            };
 
-    /*
-     * У todoList зберігається вся інформація про всі туду ліст після додавання чи редагування.
-     * Перетворюємо масив у рядок і оновлюємо локал сторейдж новим станом todoList
-     */
-    localStorage.setItem('todo-list', JSON.stringify(todoList));
+            let index = todoList.findIndex((item) => item.uuid === formattedTask.uuid);
+            if (index !== -1) {
+                todoList[index] = formattedTask
+                editHtmlTodoItem(formattedTask);
+            }
+        });
+    }
 }
 
 /*
@@ -154,7 +228,7 @@ function createHtmlTodoItem(data) {
     });
 
     // Шукаємо всередині лі елмент з класом remove-button і додаємо лістенер на подію клік
-    liElement.querySelector('.remove-button').addEventListener('click', function (event ) {
+    liElement.querySelector('.remove-button').addEventListener('click', function (event) {
         // Коли відпрацьовує клік - викликаємо функцію remove. Передаємо uuid, котрий забираємо з атрибута data-uuid кнопки
         remove(event.target.dataset.uuid);
     });
@@ -181,6 +255,12 @@ function editHtmlTodoItem(data) {
  *
  * Блок, який визначає лістенери у нашому проєкті.
  */
+// При завантаженні сторінки запускаємо функцію init, яка прочитає значення зі сховища та ствоить туду ітеми,
+// які там зберігаються. Зверніть увагу, що ця функція запускається лише один раз тут.
+window.addEventListener('load', function (event) {
+    init();
+});
+
 // Додаємо лістенер на подію відправки форми.
 document.getElementById('form').addEventListener('submit', function (event) {
     // Попереджаємо дефолтну поведінку форми (відправку данних і перезавантаження сторінки)
@@ -244,13 +324,10 @@ function clearErrors() {
  * =====================================================================================================================
  * Other
  */
+
 /*
  * Функция для генерації рандомного рядка. цей рядок буде використовуватись в якості uuid.
  */
 function generateUuid() {
     return Math.random().toString(16).slice(2);
 }
-
-// При завантаженні сторінки запускаємо функцію init, яка прочитає значення зі сховища та ствоить туду ітеми,
-// які там зберігаються. Зверніть увагу, що ця функція запускається лише один раз тут.
-init();
