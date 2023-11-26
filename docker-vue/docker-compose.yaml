@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  node_app_18:
+    container_name: 'node_app_18'
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "8080:5173" # Пробрасываем порт для доступа к приложению
+    volumes:
+      - ./:/app # Монтируем локальную директорию с приложением
