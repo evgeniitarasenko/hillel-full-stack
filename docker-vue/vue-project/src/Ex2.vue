@@ -1,20 +1,21 @@
+<!-- App.vue -->
 <template>
     <div>
-        <!-- Відобразіть блок #card при натисканні на кнопку (зверніть увагу на класс .visible та змінну isVisible) -->
-        <!-- Додатково: якщо блок #card відображено - змініть текст кнопки на "Hide block below" -->
+        <h2>Task list</h2>
+
         <div>
-            <button>Show block below</button>
+            <!-- TODO: 2 - при натисканні на кнопку - відображайте тільки відповідні задачі -->
+            <button type="button" @click="filter='all'">All</button>
+            <button type="button" @click="filter='completed'">Completed</button>
+            <button type="button" @click="filter='processed'">Processed</button>
         </div>
 
-
-        <section>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.
-        </section>
+        <ul>
+            <!-- TODO: 1. відобразіть список задач -->
+            <li v-for="task in filteredTasks" :key="task.id">
+                [task text] - [якщо виконано - 'Completed', якщо ні - 'Active']
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -22,23 +23,33 @@
 export default {
     data() {
         return {
-            isVisible: false,
-        }
-    }
-}
+            tasks: [
+                {id: 1, text: 'Buy products', completed: false},
+                {id: 2, text: 'Read the book', completed: true},
+                {id: 3, text: 'Write code', completed: false},
+            ],
+            filter: 'all',
+        };
+    },
+    computed: {
+        filteredTasks() {
+            // TODO: 2. на основі змінної filter відфільтруйте массив tasks
+
+            return this.tasks;
+        },
+    },
+};
 </script>
 
 <style>
-.visible {
-    display: block !important;
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
 }
 
-section {
-    display: none;
-
+ul {
     margin-top: 20px;
-    border: 1px solid #000;
-    padding: 20px;
 }
-
 </style>

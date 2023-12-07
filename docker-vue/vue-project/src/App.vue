@@ -1,41 +1,55 @@
 <template>
     <div>
-        <!-- --- 2 --- -->
-        <h2>Example: 2</h2>
         <div>
-            <div>Text example: {{ msg }}</div>
-            <div>Text example: {{ msg.split('').reverse().join('') + '!!!' }}</div>
-            <div>Text example: {{ 2 * 2 }}</div>
-            <div>HTML example: {{ rawHtml }}</div>
-            <div>HTML example: <span v-html="rawHtml"></span></div>
-            <br>
+            <h2>v-for</h2>
 
-            <div>String: {{ stringVar }}</div>
-            <div>Number: {{ numberVar }}</div>
-            <div>Float: {{ floatVar }}</div>
-            <div>Bool: {{ boolVar }}</div>
-            <div>Null: {{ nullVar }}</div>
-            <div>Array: {{ arrayVar }}</div>
-            <div>Object: {{ objectVar }}</div>
+            <h5>Names</h5>
+            <!-- arrayOfNames: ['Name1', 'Name2', 'Name3', ], -->
+            <ul>
+                <li v-for="name in arrayOfNames"><strong>{{ name }}</strong></li>
+                <li v-for="(name, index) in arrayOfNames">{{ index }}: <strong>{{ name }}</strong></li>
+            </ul>
+
+            <h2>Users</h2>
+            <ul>
+                <li
+                    v-for="user in arrayOfObjects"
+                    :key="user.id"
+                >{{ user.name }}</li>
+            </ul>
+
+            <hr>
         </div>
 
-        <hr>
-
-        <!-- --- 3 --- -->
-        <h2>Example: 3</h2>
         <div>
-            <input :id="input.id" :class="input.classes" :type="input.type" :disabled="input.disabled">
+            <button type="button" @click="sayHi">Hi</button>
         </div>
 
-        <hr>
-
-        <!-- --- 4 --- -->
-        <h2>Example: 4</h2>
         <div>
-            <button @click="counter = counter * 3">Click me {{ counter }}</button>
+            <!-- Computed -->
+            <!-- Якщо вік менше 18 - виводити "Дитина", якщо вік більше 65: "літня людина", у іншому разі "дорослий" -->
+            <h2>Computed</h2>
+            <div>{{ age }}: {{ humanAge }}</div>
+
+            <hr>
         </div>
 
-        <hr>
+        <div>
+            <h2>Watchers</h2>
+            <div>
+                <input type="text" v-model="text" placeholder="text">
+                <div>{{ text }}</div>
+                <div v-show="isWin" style="color: green;">
+                    <small>The sentence "{{ text }}" includes word {{ word }}. You are win</small>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <div>
+            <h2>Deep watcher</h2>
+            <input type="text" v-model="user.name" placeholder="user name">
+        </div>
     </div>
 </template>
 
@@ -43,35 +57,54 @@
 export default {
     data() {
         return {
-            // --- 1 ---
-            stringVar: 'Hello world',
-            numberVar: 2,
-            floatVar: 2.5,
-            boolVar: false,
-            nullVar: null,
-            arrayVar: [3, 6, 9],
-            objectVar: {
-                name: 'Evgenii',
+            // v-for
+            arrayOfNames: ['Name1', 'Name2', 'Name3', {test: ''}],
+            arrayOfObjects: [
+                {id: 1, name: 'Name user 1'},
+                {id: 2, name: 'Name user 2'},
+                {id: 3, name: 'Name user 3'},
+            ],
+
+            // Computed
+            age: 21,
+
+            // watchers
+            word: 'hillel',
+            text: null,
+            isWin: false,
+
+            user: {
+                id: 1,
+                name: 'Yevhen',
                 surname: 'Tarasenko',
             },
-
-            // --- 2 ---
-            msg: 'Hello world',
-            rawHtml: "<strong>Hello world</strong>",
-
-            // --- 3 ---
-            input: {
-                id: 'custom-input-id',
-                classes: {
-                    'class-name-1': false,
-                    'class-name-2': true,
-                },
-                type: 'text',
-                disabled: false
-            },
-
-            // --- 4 ---
-            counter: 1,
+        }
+    },
+    methods: {
+        getHumanAge() {
+            if (this.age < 18) {
+                return 'дитина';
+            } else if (this.age > 65) {
+                return 'літня людина';
+            } else {
+                return 'дорослий';
+            }
+        }
+    },
+    computed: {
+        humanAge() {
+            if (this.age < 18) {
+                return 'дитина';
+            } else if (this.age > 65) {
+                return 'літня людина';
+            } else {
+                return 'дорослий';
+            }
+        }
+    },
+    watch: {
+        text(newText, oldText) {
+            this.isWin = this.text.includes(this.word);
         }
     }
 }
