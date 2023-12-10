@@ -1,54 +1,60 @@
 <template>
-    <div>
-        <div>
-            <h2>v-for</h2>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="inputEmail4"
+                            v-model="user.email"
+                        >
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="inputPassword4">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Address...">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">City</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="City...">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputState" class="form-label">Area</label>
+                        <select id="inputState" class="form-select">
+                            <option value=" 1 ">Харків</option>
+                            <option value="2">Чугуїв</option>
+                            <option value="3">Краматорськ</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="inputZip" class="form-label">Index</label>
+                        <input type="text" class="form-control" id="inputZip" v-model.trim="user.index">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="about" class="form-label">About</label>
+                        <textarea v-model.trim="user.about" id="about" placeholder="About" class="form-control"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="termsCheck">
+                            <label class="form-check-label" for="termsCheck">
+                                Terms and Conditions
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </div>
+                </form>
 
-            <h5>Names</h5>
-            <!-- arrayOfNames: ['Name1', 'Name2', 'Name3', ], -->
-            <ul>
-                <li v-for="name in arrayOfNames"><strong>{{ name }}</strong></li>
-                <li v-for="(name, index) in arrayOfNames">{{ index }}: <strong>{{ name }}</strong></li>
-            </ul>
-
-            <h2>Users</h2>
-            <ul>
-                <li
-                    v-for="user in arrayOfObjects"
-                    :key="user.id"
-                >{{ user.name }}</li>
-            </ul>
-
-            <hr>
-        </div>
-
-        <div>
-            <button type="button" @click="sayHi">Hi</button>
-        </div>
-
-        <div>
-            <!-- Computed -->
-            <!-- Якщо вік менше 18 - виводити "Дитина", якщо вік більше 65: "літня людина", у іншому разі "дорослий" -->
-            <h2>Computed</h2>
-            <div>{{ age }}: {{ humanAge }}</div>
-
-            <hr>
-        </div>
-
-        <div>
-            <h2>Watchers</h2>
-            <div>
-                <input type="text" v-model="text" placeholder="text">
-                <div>{{ text }}</div>
-                <div v-show="isWin" style="color: green;">
-                    <small>The sentence "{{ text }}" includes word {{ word }}. You are win</small>
-                </div>
+                <pre class="mt-4">{{ user }}</pre>
             </div>
-            <hr>
-        </div>
-
-        <div>
-            <h2>Deep watcher</h2>
-            <input type="text" v-model="user.name" placeholder="user name">
         </div>
     </div>
 </template>
@@ -57,55 +63,26 @@
 export default {
     data() {
         return {
-            // v-for
-            arrayOfNames: ['Name1', 'Name2', 'Name3', {test: ''}],
-            arrayOfObjects: [
-                {id: 1, name: 'Name user 1'},
-                {id: 2, name: 'Name user 2'},
-                {id: 3, name: 'Name user 3'},
-            ],
-
-            // Computed
-            age: 21,
-
-            // watchers
-            word: 'hillel',
-            text: null,
-            isWin: false,
-
             user: {
-                id: 1,
-                name: 'Yevhen',
-                surname: 'Tarasenko',
-            },
+                email: null,
+                password: null,
+                address: null,
+                city: null,
+                area: null,
+                index: null,
+                about: null,
+                terms: null,
+            }
         }
     },
     methods: {
-        getHumanAge() {
-            if (this.age < 18) {
-                return 'дитина';
-            } else if (this.age > 65) {
-                return 'літня людина';
-            } else {
-                return 'дорослий';
-            }
-        }
+
     },
     computed: {
-        humanAge() {
-            if (this.age < 18) {
-                return 'дитина';
-            } else if (this.age > 65) {
-                return 'літня людина';
-            } else {
-                return 'дорослий';
-            }
-        }
+
     },
-    watch: {
-        text(newText, oldText) {
-            this.isWin = this.text.includes(this.word);
-        }
+    created() {
+        this.user.email = 'test@test.com';
     }
 }
 </script>
