@@ -2,22 +2,18 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <h2>Characteristics:</h2>
+                <h2>Characteristics ({{ availablePoints }}/{{ points }}):</h2>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" v-for="character in characteristics" :key="character.id">
-                        <!-- TODO: створіть та підключіть тут свій власний компонент -->
-                        <!-- TODO: Початок фрагменту коду. котрий потрібно винести в окремий компонент -->
-                        <div class="d-inline-block me-3">Title</div>
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-primary" @click="character.count--">-</button>
-                            <button type="button" class="btn btn-primary" readonly>count</button>
-                            <button type="button" class="btn btn-outline-primary" @click="character++">+</button>
-                        </div>
-                        <!-- TODO: Кінець фрагменту коду, котрий потрібно винести в окремий компонент -->
+                        <hw-completed-child
+                            :character="character"
+                            @changeCharacter="(character) => changeCharacter(character)"
+                            :is-active="!!availablePoints"
+                        />
                     </li>
                 </ul>
             </div>
@@ -31,6 +27,8 @@
 </template>
 
 <script>
+import HwCompletedChild from "./HwCompletedChild.vue"
+
 export default {
     data() {
         return {
@@ -70,9 +68,26 @@ export default {
                     title: 'Speed',
                     count: 0,
                 },
-            ]
+            ],
+            points: 20,
         }
     },
+    components: {HwCompletedChild},
+    methods: {
+        changeCharacter(character) {
+            let index = this.characteristics.findIndex((item) => item.id === character.id);
+            if (index !== -1) {
+                this.characteristics[index] = character;
+            }
+        }
+    },
+    computed: {
+        availablePoints() {
+            let usedSum = this.characteristics.reduce((n, character) => n + character.count, 0);
+
+            return this.points - usedSum;
+        }
+    }
 }
 </script>
 

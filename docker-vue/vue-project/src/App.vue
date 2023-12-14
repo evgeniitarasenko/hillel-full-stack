@@ -2,87 +2,82 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <form class="row g-3">
-                    <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Email</label>
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="inputEmail4"
-                            v-model="user.email"
-                        >
-                    </div>
-                    <div class="col-md-6">
-                        <label for="inputPassword4" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4">
-                    </div>
-                    <div class="col-12">
-                        <label for="inputAddress" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Address...">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="inputCity" class="form-label">City</label>
-                        <input type="text" class="form-control" id="inputCity" placeholder="City...">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="inputState" class="form-label">Area</label>
-                        <select id="inputState" class="form-select">
-                            <option value=" 1 ">Харків</option>
-                            <option value="2">Чугуїв</option>
-                            <option value="3">Краматорськ</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="inputZip" class="form-label">Index</label>
-                        <input type="text" class="form-control" id="inputZip" v-model.trim="user.index">
-                    </div>
-                    <div class="col-md-12">
-                        <label for="about" class="form-label">About</label>
-                        <textarea v-model.trim="user.about" id="about" placeholder="About" class="form-control"></textarea>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="termsCheck">
-                            <label class="form-check-label" for="termsCheck">
-                                Terms and Conditions
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
-                    </div>
-                </form>
-
-                <pre class="mt-4">{{ user }}</pre>
+                <h2>Characteristics:</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" v-for="character in characteristics" :key="character.id">
+                        <character-counter
+                            :character="character"
+                            @changeCharacter="(character) => changeCharacter(character)"
+                        />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <pre>{{ characteristics }}</pre>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import CharacterCounter from "./components/CharacterCounter.vue";
+
 export default {
     data() {
         return {
-            user: {
-                email: null,
-                password: null,
-                address: null,
-                city: null,
-                area: null,
-                index: null,
-                about: null,
-                terms: null,
-            }
+            characteristics: [
+                {
+                    id: 1,
+                    title: 'Health',
+                    count: 0,
+                },
+                {
+                    id: 2,
+                    title: 'Strength',
+                    count: 0,
+                },
+                {
+                    id: 3,
+                    title: 'Intelligence',
+                    count: 0,
+                },
+                {
+                    id: 4,
+                    title: 'Endurance',
+                    count: 0,
+                },
+                {
+                    id: 5,
+                    title: 'Mana',
+                    count: 0,
+                },
+                {
+                    id: 6,
+                    title: 'Armor',
+                    count: 0,
+                },
+                {
+                    id: 7,
+                    title: 'Speed',
+                    count: 0,
+                },
+            ]
         }
     },
+    components: {CharacterCounter},
     methods: {
-
-    },
-    computed: {
-
-    },
-    created() {
-        this.user.email = 'test@test.com';
+        changeCharacter(character) {
+            let index = this.characteristics.findIndex((item) => item.id === character.id);
+            if (index !== -1) {
+                this.characteristics[index] = character;
+            }
+        }
     }
 }
 </script>
