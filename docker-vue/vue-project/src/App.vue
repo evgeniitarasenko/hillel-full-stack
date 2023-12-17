@@ -2,82 +2,50 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <h2>Characteristics:</h2>
+                <!-- TODO: Реалізуйте компонент, котрий буде приймати параметр імені у вигляді "Evgenii Tarasenko" +-->
+                <!-- TODO: Всередині себе компонент повинен реалізовувати два окремих поля: name та surname +-->
+                <!-- TODO: При зміні будь якого параметру - компонент повинен повертати рядок у такому ж вигляді, -->
+                <!-- TODO: "Evgenii1111 Tarasenko", де спочатку буде ім'я, а потім прізвище. -->
+<!--                <full-name-input :full-name="fullName" @updateFullName="(updatedFullName) => fullName = updatedFullName"/>-->
+                <full-name-input
+                    v-model="fullName"
+                />
             </div>
         </div>
-        <div class="row">
+
+        <div class="row mt-3">
             <div class="col">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item" v-for="character in characteristics" :key="character.id">
-                        <character-counter
-                            :character="character"
-                            @changeCharacter="(character) => changeCharacter(character)"
-                        />
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <pre>{{ characteristics }}</pre>
+                {{ fullName }}
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import CharacterCounter from "./components/CharacterCounter.vue";
+import FullNameInput from "./components/FullNameInput.vue";
+import axios from 'axios';
 
 export default {
     data() {
         return {
-            characteristics: [
-                {
-                    id: 1,
-                    title: 'Health',
-                    count: 0,
-                },
-                {
-                    id: 2,
-                    title: 'Strength',
-                    count: 0,
-                },
-                {
-                    id: 3,
-                    title: 'Intelligence',
-                    count: 0,
-                },
-                {
-                    id: 4,
-                    title: 'Endurance',
-                    count: 0,
-                },
-                {
-                    id: 5,
-                    title: 'Mana',
-                    count: 0,
-                },
-                {
-                    id: 6,
-                    title: 'Armor',
-                    count: 0,
-                },
-                {
-                    id: 7,
-                    title: 'Speed',
-                    count: 0,
-                },
-            ]
+            fullName: 'Evgenii1 Tarasenko',
         }
     },
-    components: {CharacterCounter},
-    methods: {
-        changeCharacter(character) {
-            let index = this.characteristics.findIndex((item) => item.id === character.id);
-            if (index !== -1) {
-                this.characteristics[index] = character;
-            }
+    components: {FullNameInput},
+    created() {
+        // https://api.giphy.com/v1/gifs/trending?api_key=JSnoslYjDiKWbebAPPnTnJl8YH9vW4ST
+
+        axios.get('https://api.giphy.com/v1/gifs/trending?api_key=JSnoslYjDiKWbebAPPnTnJl8YH9vW4ST').then((response) => {
+            console.log(response);
+        });
+
+        let user = {
+            name: 'Test',
         }
+
+        axios.delete('https://api...').then((response) => {
+            console.log(response);
+        });
     }
 }
 </script>
