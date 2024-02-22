@@ -1,182 +1,168 @@
 <?php
 
-var_dump(1 + 1);
-var_dump(1 - 2);
-var_dump(2 * 2);
-var_dump(1 / 2);
-var_dump(3 % 2);
-var_dump(3 ** 2);
-
-echo('</br>');
-
-var_dump(gettype(1));
-var_dump(gettype(1.3));
-var_dump(gettype('sdsds'));
-var_dump(gettype(true));
-var_dump(gettype([]));
-var_dump(gettype(new \stdClass()));
-var_dump(gettype(function () {}));
+//phpinfo(); die;
 
 
-echo('</br>');
-
-var_dump(('sdsds'));
-var_dump(('sds\'ds'));
-var_dump(("sdsds"));
-var_dump(("sds\"ds"));
-$variable = 'var';
-var_dump(gettype("sdsds {$variable}"));
-
-echo('</br>');
-
-var_dump('Hello ' . $variable);
-var_dump(1 . ' string');
-
-echo('</br>');
-
-var_dump(gettype((string) 1));
-var_dump(((string) 1));
-var_dump(((bool) 1));
-var_dump(((bool) 0));
-var_dump(((bool) []));
-var_dump(((bool) null));
-var_dump(((bool) '0'));
-var_dump(((bool) $variable));
-
-echo('</br>');
-
-$someName = 1;
-$someName2 = 'sdasdasda';
-$someName2 = 2;
-
-const PI = 3.14;
-
-var_dump(PHP_INT_MAX);
-var_dump(__FILE__);
-var_dump(__LINE__);
-
-echo('</br>');
-echo('</br>');
-
-$count = 3;
-if ($count === 1) {
-    echo 'COUNT 1';
-} else if ($count === 2) {
-    echo 'COUNT 2';
-} elseif ($count === 3) {
-    echo 'COUNT 3';
-} else {
-    echo 'COUNT is not 1';
-}
-
-echo('</br>');
-echo('</br>');
-
-$count = 4;
-echo($count === 3 ? '3' : 'not 3');
-echo('</br>');
-
-$var1 = null;
-$var2 = 'zfdsfsdfsd';
-
-echo($var1 ?: $var2);
-echo($var1 ?? $var2);
 
 
-echo('</br>');
-echo('</br>');
-
-$i = 1;
-while ($i < 12) {
-    if ($i === 1) {
-        $i += 2;
-        continue;
-    }
-
-    if ($i === 7) {
-        break;
-    }
-
-    echo $i;
-    $i += 2;
-}
-
-echo('</br>');
-echo('</br>');
-
-for ($i = 1; $i<=10; $i++) {
-    echo $i;
-}
-
-echo('</br>');
-echo('</br>');
-
-$array = [1, 2, 4, 5];
-
-foreach ($array as $value) {
-//    var_dump($value);
-//    echo '</br>';
-}
-
-foreach ($array as $key => $value) {
-//    echo($key . ' ' . $value);
-//    echo '</br>';
-}
-
-echo('</br>');
-echo('</br>');
-
-$array = [1, 2, 4, 5];
-$associativeArray = [
-    'name' => 'Evgenii',
-    'surname' => 'Tarasenko',
-    'contacts' => [
-        'phone' => '231231231',
-        'email' => 'dasdsa@sdfds.sdfasd'
-    ],
-];
-
-foreach ($associativeArray as $key => $value) {
-    if (is_array($value)) {
-        foreach ($value as $key1 => $value1) {
-//            echo($key1 . ': ' . $value1);
-//            echo '</br>';
-        }
-
-        continue;
-    }
-
-    echo($key . ': ' . $value);
-    echo '</br>';
-}
 
 
-echo('</br>');
-echo('</br>');
+//session_start();
+//
+//if (empty($_SESSION['is_auth'])) {
+//    header('Location: /auth.php');
+//    exit();
+//}
 
 
-$varNew = 1;
-//echo $varNew;
 
 
-/**
- * Function description
- *
- * @param string $name
- * @param ?array $recipients
- * @return array|null
- */
-function sayHello(string $name = 'Test', ?array $recipients = []): ?array
-{
-    echo 'Hello ' . $name . '</br>';
 
-    if (rand(1, 2) == 1) {
-        return null;
-    }
 
-    return [];
-}
 
-//var_dump(sayHello());
-sayHello('Evgenii', [1, 2, 3, 4]);
-sayHello(1);
+
+
+
+
+//$errors = [
+//    'email' => null,
+//    'zip' => null,
+//];
+//
+//if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+//    echo "IS GET";
+//    var_dump($_GET);
+//} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+////    echo "IS POST";
+//
+//    $email = trim($_POST['email']);
+//    $zip = trim($_POST['zip']);
+//    $password = trim($_POST['password']);
+//
+//    /*
+//     * Email
+//     */
+//    if (empty($email)) {
+//        $errors['email'] = 'Email is required';
+//    }
+//
+//    $emailLength = mb_strlen($email);
+//    if ($emailLength < 4) {
+//        $errors['email'] = 'Email > 3';
+//    }
+//
+//    if ($emailLength > 255) {
+//        $errors['email'] = 'Email < 255';
+//    }
+//
+//    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//        $errors['email'] = 'Email mast be valid email';
+//    }
+//
+//    /*
+//     * Zip
+//     */
+//    if (!preg_match('/^[0-9\-]*$/', $zip)) {
+//        $errors['zip'] = 'Zip only numbers';
+//    }
+//
+//    /*
+//     * ["name"]=> string(8) "test.jpg"
+//     * ["full_path"]=> string(8) "test.jpg"
+//     * ["type"]=> string(10) "image/jpeg"
+//     * ["tmp_name"]=> string(14) "/tmp/phpaNtG4c"
+//     * ["error"]=> int(0)
+//     * ["size"]=> int(349964)
+//     */
+//
+//    if (isset($_FILES['avatar'])) {
+//        // '/var/www/html/uploads/test.jpg'
+//        $parts = explode('.', $_FILES['avatar']['name']);
+//        $uploadFile = '/var/www/html/uploads/' . uniqid() . '.' . $parts[array_key_last($parts)];
+//
+//        if (filesize($_FILES['avatar']['tmp_name']) > 2 * 1024 * 1024) {
+//            var_dump('File 2MB. Error'); die;
+//        }
+//
+//        if (move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadFile)) {
+//            echo "File is valid, and was successfully uploaded.\n";
+//        } else {
+//            echo "Possible file upload attack!\n";
+//        }
+//    }
+//}
+//
+
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-3">
+
+    <h1>Home/ Only Admin</h1>
+<!--    <img src="/uploads/test.jpg" alt="">-->
+    
+    <form class="row g-3" method="POST" action="/" enctype="multipart/form-data">
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="text" class="form-control" id="inputEmail4" name="email">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" name="password" value="12312321312">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <select id="inputState" class="form-select">
+                <option selected>Choose...</option>
+                <option>...</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="inputZip" name="zip">
+<!--            <div style="color: red">--><?php //= $errors['zip'] ?><!--</div>-->
+        </div>
+        <div class="col-md-12">
+            <label for="avatar" class="form-label">Avatar</label>
+            <input type="file" class="form-control" id="avatar" name="avatar">
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Check me out
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
+
