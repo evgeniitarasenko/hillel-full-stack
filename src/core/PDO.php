@@ -16,7 +16,6 @@ class PDO
             return self::$PDO;
         }
 
-        var_dump(1);
         $config = require __DIR__ . '/../config/database.php';
 
         $dsn = "mysql:host={$config['host']};dbname={$config['db']};charset={$config['charset']}";
