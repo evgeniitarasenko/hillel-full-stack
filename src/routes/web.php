@@ -12,6 +12,10 @@ return [
     '/poll-types/show' => [\app\Controllers\PollTypeController::class, 'show'],
     '/poll-types/create' => [\app\Controllers\PollTypeController::class, 'create'],
     '/poll-types/store' => [\app\Controllers\PollTypeController::class, 'store'],
+    '/poll-types/edit' => [\app\Controllers\PollTypeController::class, 'edit'],
+    '/poll-types/update' => [\app\Controllers\PollTypeController::class, 'update'],
 
+    '/poll-type-questions/store' => [\app\Controllers\PollTypeQuestionController::class, 'store'],
+    '/poll-type-questions/delete' => [\app\Controllers\PollTypeQuestionController::class, 'delete'],
 
 ];

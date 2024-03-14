@@ -24,7 +24,19 @@
             <form class="row g-3 needs-validation" method="post" action="/poll-types/store">
                 <div class="col-md-4">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input
+                            type="text"
+                            class="form-control <?php echo isset($_SESSION['errors']['name']) ? 'is-invalid' : '' ?>"
+                            id="name"
+                            name="name"
+                            value="<?php echo $_SESSION['old']['name'] ?? null ?>"
+                    >
+
+                    <?php if (isset($_SESSION['errors']['name'])): ?>
+                        <div class="invalid-feedback">
+                            <?php echo $_SESSION['errors']['name'] ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="col-12">
@@ -37,3 +49,6 @@
 
 </body>
 </html>
+
+<?php $_SESSION['errors'] = []; ?>
+<?php $_SESSION['old'] = []; ?>

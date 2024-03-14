@@ -27,6 +27,7 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,9 @@
                             <?php elseif ($pollType->isPublished()): ?>
                                 <span class="badge bg-success"><?php echo $pollType->attributes['status'] ?></span>
                             <?php endif ?>
+                        </td>
+                        <td>
+                            <a href="/poll-types/edit?id=<?= $pollType->attributes['id'] ?>">Edit</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

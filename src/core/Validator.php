@@ -2,10 +2,10 @@
 
 namespace core;
 
+use Exception;
+
 class Validator
 {
-
-
     public function __construct(protected array $rules, protected array $data)
     {
     }
@@ -25,7 +25,30 @@ class Validator
                 $value = $this->data[$fieldKey] ?? null;
                 $handlers = $this->getHandlers();
 
-                if (array_key_exists($rule, $handlers) && !$handlers[$rule]($value)) {
+                if (!array_key_exists($rule, $handlers)) {
+                    throw new Exception("Rule {$rule} not found");
+                }
+
+                /*
+                 * [
+                        'validator' => fn($value) => empty($value),
+                        'messageRender' => fn($fieldKey) => "Field {$fieldKey} is required",
+                    ]
+                 */
+                $handler = $handlers[$rule];
+
+                if ($handler['validator']($value)) {
+                    $message = $handler['messageRender']($fieldKey);
+
+                    /*
+                     * [
+                     *    name => "Field name is required"
+                      * ]
+                     */
+                    $_SESSION['errors'] = [
+                        $fieldKey => $message
+                    ];
+
                     return false;
                 }
             }
@@ -37,9 +60,18 @@ class Validator
     protected function getHandlers(): array
     {
         return [
-            'required' => fn($value) => empty($value),
-            'min3' => fn($value) => mb_strlen($value) < 3,
-            'max255' => fn($value) => mb_strlen($value) > 255
+            'required' => [
+                'validator' => fn($value) => empty($value),
+                'messageRender' => fn($fieldKey) => "Field {$fieldKey} is required",
+            ],
+            'min3' => [
+                'validator' => fn($value) => mb_strlen($value) < 3,
+                'messageRender' => fn($fieldKey) => "Field {$fieldKey} min 3",
+            ],
+            'max255' => [
+                'validator' => fn($value) => mb_strlen($value) > 255,
+                'messageRender' => fn($fieldKey) => "Field {$fieldKey} max",
+            ],
         ];
     }
 }
